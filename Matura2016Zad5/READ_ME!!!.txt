@@ -1,0 +1,1 @@
+Nie jestem pewien, czy jest to dobrze - nie wszystkie podpunkty zgadzaja sie z odpowiedziami.
