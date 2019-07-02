@@ -21,14 +21,23 @@ def zad_2(data: list) -> int:
 
 
 def zad_3(data: list) -> list:
-    max_len = max([len(max(num.split('1'), key = len)) for num in data])
-    return [num for num in data if len(max(num.split('1'), key = len)) == max_len], max_len
+    maxi = -1
+    lens = []
+    for number in data:
+        temp_len = len(max(number.split('1'), key=len))
+        if temp_len >= maxi:
+            lens.append((number, temp_len))
+        maxi = max(maxi, temp_len)
+    return {
+        "list_of_longest": [num[0] for num in lens if num[1] == maxi],
+        "max_len": maxi
+    }
 
 
 if __name__ == '__main__':
     data = load_data("slowa.txt")
     print(zad_1(data))
     print(zad_2(data))
-    zad_3_ans, zad_3_len = zad_3(data)
-    print('\n'.join(zad_3_ans))
-    print(zad_3_len)
+    zad_3_ans = zad_3(data)
+    print('\n'.join(zad_3_ans["list_of_longest"]))
+    print(zad_3_ans["max_len"])
